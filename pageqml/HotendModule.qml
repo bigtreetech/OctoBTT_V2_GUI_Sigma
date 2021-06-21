@@ -50,6 +50,7 @@ Item {
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
                 Label {
+                    id: hotend_actual
                     height: parent.height
                     anchors.left: parent.left
                     anchors.leftMargin: parent.width * 0.05
@@ -61,7 +62,7 @@ Item {
                                          "Actual")
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
-                    font.pointSize: height * 0.5
+                    font.pointSize: height * 0.3
                 }
             }
             Rectangle {
@@ -72,6 +73,7 @@ Item {
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 Label {
+                    id: hotend_target
                     height: parent.height
                     anchors.right: parent.right
                     anchors.rightMargin: parent.width * 0.05
@@ -83,7 +85,7 @@ Item {
                                          "Target")
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
-                    font.pointSize: height * 0.5
+                    font.pointSize: height * 0.3
                 }
             }
         }

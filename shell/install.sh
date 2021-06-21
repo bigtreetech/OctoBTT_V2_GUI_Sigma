@@ -24,11 +24,6 @@ echo "Setting up Sudo for wifi configuration..."
 sudo cp OctoBTT/OctoBTT.sudoers.d /etc/sudoders.d/OctoBTT
 echo "Done."
 
-echo "Setting up Autostart ..."
-#sudo sed -i '/exit 0/ i su -l pi -c "startx -- -nocursor"' /etc/rc.local
-sudo sed -i 's/sudo \/bin\/sh \/home\/pi\/OctoBTT\/shell\/install.sh/su -l pi -c \"cd \/home\/pi\/OctoBTT \&\& .\/OctoBTT -platform eglfs\"/g' /etc/rc.local
-echo "Done."
-
 #echo "Download OctoBTT ..."
 #cd /home/pi
 #rm -rf OctoBTT
@@ -48,5 +43,12 @@ if [ ! -f "$OctoBTT" ]; then
  rm OctoBTT
  make clean
 fi
-make -j$(cat /proc/cpuinfo | grep processor | wc -l) && make clean && sudo reboot
+make -j$(cat /proc/cpuinfo | grep processor | wc -l) && make clean
 EOF
+
+echo "Setting up Autostart ..."
+#sudo sed -i '/exit 0/ i su -l pi -c "startx -- -nocursor"' /etc/rc.local
+sudo sed -i 's/sudo \/bin\/sh \/home\/pi\/OctoBTT\/shell\/install.sh/su -l pi -c \"cd \/home\/pi\/OctoBTT \&\& .\/OctoBTT -platform eglfs\"/g' /etc/rc.local
+echo "Done."
+
+sudo reboot
