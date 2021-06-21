@@ -1,0 +1,486 @@
+{
+    "api": {
+        "allowCrossOrigin": false,
+        "key": "4A929644EA274C418FC263A442368FA3"
+    },
+    "appearance": {
+        "closeModalsWithClick": true,
+        "color": "default",
+        "colorIcon": true,
+        "colorTransparent": false,
+        "defaultLanguage": "_default",
+        "fuzzyTimes": true,
+        "name": "",
+        "showFahrenheitAlso": false,
+        "showInternalFilename": true
+    },
+    "devel": {
+        "pluginTimings": false
+    },
+    "feature": {
+        "autoUppercaseBlacklist": [
+            "M117",
+            "M118"
+        ],
+        "g90InfluencesExtruder": false,
+        "keyboardControl": true,
+        "modelSizeDetection": true,
+        "pollWatched": false,
+        "printCancelConfirmation": true,
+        "printStartConfirmation": false,
+        "sdSupport": true,
+        "temperatureGraph": true
+    },
+    "folder": {
+        "logs": "/home/pi/.octoprint/logs",
+        "timelapse": "/home/pi/.octoprint/timelapse",
+        "timelapseTmp": "/home/pi/.octoprint/timelapse/tmp",
+        "uploads": "/home/pi/.octoprint/uploads",
+        "watched": "/home/pi/.octoprint/watched"
+    },
+    "gcodeAnalysis": {
+        "runAt": "idle"
+    },
+    "plugins": {
+        "action_command_notification": {
+            "enable": true,
+            "enable_popups": false
+        },
+        "action_command_prompt": {
+            "command": "M876",
+            "enable": "detected",
+            "enable_emergency_sending": true,
+            "enable_signal_support": true
+        },
+        "announcements": {
+            "channel_order": [
+                "_important",
+                "_releases",
+                "_blog",
+                "_plugins",
+                "_octopi"
+            ],
+            "channels": {
+                "_blog": {
+                    "description": "Development news, community spotlights, OctoPrint On Air episodes and more from the official OctoBlog.",
+                    "name": "On the OctoBlog",
+                    "priority": 2,
+                    "read_until": 1622212200,
+                    "type": "rss",
+                    "url": "https://octoprint.org/feeds/octoblog.xml"
+                },
+                "_important": {
+                    "description": "Important announcements about OctoPrint.",
+                    "name": "Important Announcements",
+                    "priority": 1,
+                    "read_until": 1521111600,
+                    "type": "rss",
+                    "url": "https://octoprint.org/feeds/important.xml"
+                },
+                "_octopi": {
+                    "description": "News around OctoPi, the Raspberry Pi image including OctoPrint.",
+                    "name": "OctoPi News",
+                    "priority": 2,
+                    "read_until": 1611568800,
+                    "type": "rss",
+                    "url": "https://octoprint.org/feeds/octopi.xml"
+                },
+                "_plugins": {
+                    "description": "Announcements of new plugins released on the official Plugin Repository.",
+                    "name": "New Plugins in the Repository",
+                    "priority": 2,
+                    "read_until": 1622523600,
+                    "type": "rss",
+                    "url": "https://plugins.octoprint.org/feed.xml"
+                },
+                "_releases": {
+                    "description": "Announcements of new releases and release candidates of OctoPrint.",
+                    "name": "Release Announcements",
+                    "priority": 2,
+                    "read_until": 1620652800,
+                    "type": "rss",
+                    "url": "https://octoprint.org/feeds/releases.xml"
+                }
+            },
+            "display_limit": 3,
+            "enabled_channels": [
+                "_important",
+                "_releases",
+                "_blog",
+                "_plugins",
+                "_octopi"
+            ],
+            "forced_channels": [
+                "_important"
+            ],
+            "summary_limit": 300,
+            "ttl": 360
+        },
+        "backup": {
+            "restore_unsupported": false
+        },
+        "discovery": {
+            "addresses": null,
+            "httpPassword": null,
+            "httpUsername": null,
+            "interfaces": null,
+            "model": {
+                "description": null,
+                "name": null,
+                "number": null,
+                "serial": null,
+                "url": null,
+                "vendor": null,
+                "vendorUrl": null
+            },
+            "pathPrefix": null,
+            "publicHost": null,
+            "publicPort": 80,
+            "upnpUuid": "1e98de13-73dc-49c3-9bbc-47c0286939e2",
+            "zeroConf": []
+        },
+        "errortracking": {
+            "enabled": false,
+            "enabled_unreleased": false,
+            "unique_id": "21fad839-c6c1-43ee-8fa5-c7ac26845753",
+            "url_coreui": "https://1c5aadba206f46cea250f3ef5066e253@o118517.ingest.sentry.io/1374096",
+            "url_server": "https://1e1cfca4b230430b82ce56b1fe802437@o118517.ingest.sentry.io/1373987"
+        },
+        "gcodeviewer": {
+            "mobileSizeThreshold": 2097152,
+            "sizeThreshold": 20971520
+        },
+        "pi_support": {
+            "ignore_unrecommended_model": false,
+            "vcgencmd_throttle_check_command": "/usr/bin/vcgencmd get_throttled",
+            "vcgencmd_throttle_check_enabled": true
+        },
+        "pluginmanager": {
+            "confirm_disable": false,
+            "dependency_links": false,
+            "hidden": [],
+            "ignore_throttled": false,
+            "notices": "https://plugins.octoprint.org/notices.json",
+            "notices_ttl": 360,
+            "pip_args": null,
+            "pip_force_user": false,
+            "repository": "https://plugins.octoprint.org/plugins.json",
+            "repository_ttl": 1440
+        },
+        "softwareupdate": {
+            "cache_ttl": 1440,
+            "check_overlay_ttl": 360,
+            "check_overlay_url": "https://plugins.octoprint.org/update_check_overlay.json",
+            "credentials": {},
+            "ignore_throttled": false,
+            "minimum_free_storage": 150,
+            "notify_users": true,
+            "octoprint_branch_mappings": [
+                {
+                    "branch": "master",
+                    "commitish": [
+                        "master"
+                    ],
+                    "name": "Stable"
+                },
+                {
+                    "branch": "rc/maintenance",
+                    "commitish": [
+                        "rc/maintenance"
+                    ],
+                    "name": "Maintenance RCs"
+                },
+                {
+                    "branch": "rc/devel",
+                    "commitish": [
+                        "rc/maintenance",
+                        "rc/devel"
+                    ],
+                    "name": "Devel RCs"
+                }
+            ],
+            "octoprint_checkout_folder": null,
+            "octoprint_method": "pip",
+            "octoprint_pip_target": "https://github.com/OctoPrint/OctoPrint/archive/{target_version}.zip",
+            "octoprint_release_channel": "master",
+            "octoprint_tracked_branch": null,
+            "octoprint_type": "github_release",
+            "pip_command": null,
+            "pip_enable_check": false
+        },
+        "tracking": {
+            "enabled": true,
+            "events": {
+                "commerror": true,
+                "plugin": true,
+                "pong": true,
+                "printer": true,
+                "printer_safety_check": true,
+                "printjob": true,
+                "slicing": true,
+                "startup": true,
+                "throttled": true,
+                "update": true
+            },
+            "ping": null,
+            "pong": 86400,
+            "server": null,
+            "unique_id": "88f5eed1-ec4b-4def-9bd5-f9d7ed015a78"
+        },
+        "virtual_printer": {
+            "ambientTemperature": 21.3,
+            "brokenM29": true,
+            "brokenResend": false,
+            "busyInterval": 2.0,
+            "capabilities": {
+                "AUTOREPORT_SD_STATUS": true,
+                "AUTOREPORT_TEMP": true,
+                "EMERGENCY_PARSER": true
+            },
+            "commandBuffer": 4,
+            "echoOnM117": true,
+            "enable_eeprom": true,
+            "enabled": false,
+            "errors": {
+                "checksum_mismatch": "Checksum mismatch",
+                "checksum_missing": "Missing checksum",
+                "command_unknown": "Unknown command {}",
+                "lineno_mismatch": "expected line {} got {}",
+                "lineno_missing": "No Line Number with checksum, Last Line: {}",
+                "maxtemp": "MAXTEMP triggered!",
+                "mintemp": "MINTEMP triggered!"
+            },
+            "firmwareName": "Virtual Marlin 1.0",
+            "forceChecksum": false,
+            "hasBed": true,
+            "hasChamber": false,
+            "includeCurrentToolInTemps": true,
+            "includeFilenameInOpened": true,
+            "klipperTemperatureReporting": false,
+            "m105NoTargetFormatString": "{heater}:{actual:.2f}",
+            "m105TargetFormatString": "{heater}:{actual:.2f}/ {target:.2f}",
+            "m114FormatString": "X:{x} Y:{y} Z:{z} E:{e[current]} Count: A:{a} B:{b} C:{c}",
+            "m115FormatString": "FIRMWARE_NAME:{firmware_name} PROTOCOL_VERSION:1.0",
+            "m115ReportCapabilities": true,
+            "numExtruders": 1,
+            "okAfterResend": false,
+            "okBeforeCommandOutput": false,
+            "okFormatString": "ok",
+            "pinnedExtruders": null,
+            "preparedOks": [],
+            "repetierStyleTargetTemperature": false,
+            "reprapfwM114": false,
+            "resend_ratio": 0,
+            "resetLines": [
+                "start",
+                "Marlin: Virtual Marlin!",
+                "\u0080",
+                "SD card ok"
+            ],
+            "rxBuffer": 64,
+            "sdFiles": {
+                "longname": false,
+                "size": true
+            },
+            "sendBusy": false,
+            "sendWait": true,
+            "sharedNozzle": false,
+            "simulateReset": true,
+            "smoothieTemperatureReporting": false,
+            "supportF": false,
+            "supportM112": true,
+            "support_M503": true,
+            "throttle": 0.01,
+            "waitInterval": 1.0
+        }
+    },
+    "printer": {
+        "defaultExtrusionLength": 5
+    },
+    "scripts": {
+        "gcode": {
+            "afterPrintCancelled": "; disable motors\nM84\n\n;disable all heaters\n{% snippet 'disable_hotends' %}\n{% snippet 'disable_bed' %}\n;disable fan\nM106 S0",
+            "snippets/disable_bed": "{% if printer_profile.heatedBed %}M140 S0\n{% endif %}",
+            "snippets/disable_hotends": "{% if printer_profile.extruder.sharedNozzle %}M104 T0 S0\n{% else %}{% for tool in range(printer_profile.extruder.count) %}M104 T{{ tool }} S0\n{% endfor %}{% endif %}"
+        }
+    },
+    "serial": {
+        "abortHeatupOnCancel": true,
+        "ackMax": 1,
+        "additionalBaudrates": [],
+        "additionalPorts": [],
+        "alwaysSendChecksum": false,
+        "autoconnect": false,
+        "baudrate": null,
+        "baudrateOptions": [
+            250000,
+            230400,
+            115200,
+            57600,
+            38400,
+            19200,
+            9600
+        ],
+        "blacklistedBaudrates": [],
+        "blacklistedPorts": [],
+        "blockWhileDwelling": false,
+        "blockedCommands": [
+            "M0",
+            "M1"
+        ],
+        "capAutoreportSdStatus": true,
+        "capAutoreportTemp": true,
+        "capBusyProtocol": true,
+        "capEmergencyParser": true,
+        "checksumRequiringCommands": [
+            "M110"
+        ],
+        "disableSdPrintingDetection": false,
+        "disconnectOnErrors": true,
+        "emergencyCommands": [
+            "M112",
+            "M108",
+            "M410"
+        ],
+        "exclusive": true,
+        "externalHeatupDetection": true,
+        "firmwareDetection": true,
+        "helloCommand": "M110 N0",
+        "ignoreErrorsFromFirmware": false,
+        "ignoreIdenticalResends": false,
+        "log": false,
+        "logPositionOnCancel": false,
+        "logPositionOnPause": true,
+        "longRunningCommands": [
+            "G4",
+            "G28",
+            "G29",
+            "G30",
+            "G32",
+            "M400",
+            "M226",
+            "M600"
+        ],
+        "maxTimeoutsIdle": 2,
+        "maxTimeoutsLong": 5,
+        "maxTimeoutsPrinting": 5,
+        "neverSendChecksum": false,
+        "notifySuppressedCommands": "warn",
+        "pausingCommands": [
+            "M0",
+            "M1",
+            "M25"
+        ],
+        "port": null,
+        "portOptions": [
+            "/dev/ttyACM0"
+        ],
+        "repetierTargetTemp": false,
+        "resendRatioStart": 100,
+        "resendRatioThreshold": 10,
+        "sanityCheckTools": true,
+        "sdAlwaysAvailable": false,
+        "sdRelativePath": false,
+        "sendM112OnError": true,
+        "supportResendsWithoutOk": "detect",
+        "swallowOkAfterResend": true,
+        "timeoutBaudrateDetectionPause": 1.0,
+        "timeoutCommunication": 30.0,
+        "timeoutCommunicationBusy": 3.0,
+        "timeoutConnection": 10.0,
+        "timeoutDetectionConsecutive": 2.0,
+        "timeoutDetectionFirst": 10.0,
+        "timeoutPositionLogWait": 10.0,
+        "timeoutSdStatus": 1.0,
+        "timeoutSdStatusAutoreport": 1.0,
+        "timeoutTemperature": 5.0,
+        "timeoutTemperatureAutoreport": 2.0,
+        "timeoutTemperatureTargetSet": 2.0,
+        "triggerOkForM29": true,
+        "useParityWorkaround": "detect",
+        "waitForStart": false
+    },
+    "server": {
+        "allowFraming": false,
+        "commands": {
+            "serverRestartCommand": "sudo service octoprint restart",
+            "systemRestartCommand": "sudo shutdown -r now",
+            "systemShutdownCommand": "sudo shutdown -h now"
+        },
+        "diskspace": {
+            "critical": 209715200,
+            "warning": 524288000
+        },
+        "onlineCheck": {
+            "enabled": true,
+            "host": "8.8.8.8",
+            "interval": 15,
+            "name": "octoprint.org",
+            "port": 53
+        },
+        "pluginBlacklist": {
+            "enabled": true,
+            "ttl": 15,
+            "url": "https://plugins.octoprint.org/blacklist.json"
+        }
+    },
+    "system": {
+        "actions": [],
+        "events": null
+    },
+    "temperature": {
+        "cutoff": 30,
+        "profiles": [
+            {
+                "bed": 100,
+                "chamber": null,
+                "extruder": 210,
+                "name": "ABS"
+            },
+            {
+                "bed": 60,
+                "chamber": null,
+                "extruder": 180,
+                "name": "PLA"
+            }
+        ],
+        "sendAutomatically": false,
+        "sendAutomaticallyAfter": 1
+    },
+    "terminalFilters": [
+        {
+            "name": "Suppress temperature messages",
+            "regex": "(Send: (N\\d+\\s+)?M105)|(Recv:\\s+(ok\\s+((P|B|N)\\d+\\s+)*)?(B|T\\d*):\\d+)"
+        },
+        {
+            "name": "Suppress SD status messages",
+            "regex": "(Send: (N\\d+\\s+)?M27)|(Recv: SD printing byte)|(Recv: Not SD printing)"
+        },
+        {
+            "name": "Suppress wait responses",
+            "regex": "Recv: wait"
+        },
+        {
+            "name": "Suppress processing responses",
+            "regex": "Recv: (echo:\\s*)?busy:\\s*processing"
+        }
+    ],
+    "webcam": {
+        "bitrate": "10000k",
+        "ffmpegPath": "/usr/bin/ffmpeg",
+        "ffmpegThreads": 1,
+        "ffmpegVideoCodec": "libx264",
+        "flipH": false,
+        "flipV": false,
+        "rotate90": false,
+        "snapshotSslValidation": true,
+        "snapshotTimeout": 5,
+        "snapshotUrl": "http://127.0.0.1:8080/?action=snapshot",
+        "streamRatio": "16:9",
+        "streamTimeout": 5,
+        "streamUrl": "/webcam/?action=stream",
+        "timelapseEnabled": true,
+        "watermark": true,
+        "webcamEnabled": true
+    }
+}

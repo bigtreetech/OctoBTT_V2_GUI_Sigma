@@ -1,4 +1,4 @@
-import QtQuick 2.9
+﻿import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQml 2.0
 import "../pageqml"
@@ -45,9 +45,10 @@ import "../"
 *   最后修改时间: 2021 / 3 / 12
 **************************************************/
 Item {
+	property string file_version: "1.0.0.0"//文件版本控制
 	width: 800
 	height: 480
-	id: outside
+	id: root
 	property alias backgroundColor: backboard.color /* 键盘背景颜色 */
 	property alias backgroundOpacity: backboard.opacity /* 键盘背景透明度 */
 	property color keyFontColor: "white" /* 键盘按键字体颜色 */
@@ -114,12 +115,12 @@ Item {
 					spacing: width * 0.01
 					property double unitWidth: columnsCount * height <= width ? height : (width - (columnsCount - 1) * spacing) / (columnsCount)
 					AllBtnStyle {
-						btnImagePath: "qrc:/assets/KB/cancel.svg"
+						btnImagePath: "../assets/KB/cancel.svg"
 						height: parent.height
 						width: parent.unitWidth
 						btnColor: themeColor
 						onKeySignal: {
-							outside.exit(keyboardText.originalText, false)
+							root.exit(keyboardText.originalText, false)
 						}
 					}
 					TextField {
@@ -127,19 +128,19 @@ Item {
 						height: parent.height
 						width: parent.width - 2 * (parent.unitWidth + parent.spacing)
 						placeholderText: qsTr("Please enter the command")
-						font.pointSize: height / 3
+						font.pointSize: height / 3 <= 0 ? 1 : height / 3
 						font.bold: true
 						text: ""
 						property string originalText: ""
 						focus: true
 					}
 					AllBtnStyle {
-						btnImagePath: "qrc:/assets/KB/affirm .svg"
+						btnImagePath: "../assets/KB/affirm .svg"
 						height: parent.height
 						width: parent.unitWidth
 						btnColor: themeColor
 						onKeySignal: {
-							outside.exit(keyboardText.text, true)
+							root.exit(keyboardText.text, true)
 						}
 					}
 				}
@@ -264,7 +265,7 @@ Item {
 					}
 					AllBtnStyle {
 						///Delete Key
-						btnImagePath: "qrc:/assets/KB/del.svg"
+						btnImagePath: "../assets/KB/del.svg"
 						height: parent.height
 						width: parent.unitWidth
 						btnColor: themeColor
@@ -668,7 +669,7 @@ Item {
 					property double unitWidth: (width - (columnsCount + 5)
 												* spacing) / (columnsCount + 6)
 					AllBtnStyle {
-						btnImagePath: "qrc:/assets/KB/left.svg"
+						btnImagePath: "../assets/KB/left.svg"
 						height: parent.height
 						width: parent.unitWidth * 2 + parent.spacing
 						repeaterTimer: true
@@ -688,7 +689,7 @@ Item {
 						}
 					}
 					AllBtnStyle {
-						btnImagePath: "qrc:/assets/KB/blank.svg"
+						btnImagePath: "../assets/KB/blank.svg"
 						height: parent.height
 						width: parent.unitWidth * 5 + 4 * parent.spacing
 						btnColor: themeColor
@@ -718,7 +719,7 @@ Item {
 						}
 					}
 					AllBtnStyle {
-						btnImagePath: "qrc:/assets/KB/right.svg"
+						btnImagePath: "../assets/KB/right.svg"
 						height: parent.height
 						width: parent.unitWidth * 2 + parent.spacing
 						repeaterTimer: true

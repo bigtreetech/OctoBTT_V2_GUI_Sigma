@@ -1,0 +1,31 @@
+{
+    "current": {
+        "baudrate": 115200,
+        "port": "/dev/ttyACM0",
+        "printerProfile": "_default",
+        "state": "Operational"
+    },
+    "options": {
+        "baudratePreference": null,
+        "baudrates": [
+            250000,
+            230400,
+            115200,
+            57600,
+            38400,
+            19200,
+            9600
+        ],
+        "portPreference": null,
+        "ports": [
+            "/dev/ttyACM0"
+        ],
+        "printerProfilePreference": "_default",
+        "printerProfiles": [
+            {
+                "id": "_default",
+                "name": "Default"
+            }
+        ]
+    }
+}

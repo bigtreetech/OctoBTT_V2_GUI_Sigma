@@ -1,0 +1,9 @@
+{
+    "event": {
+        "type": "SettingsUpdated",
+        "payload": {
+            "config_hash": "07a90631a8ef394e6ccbd7e359c6af73",
+            "effective_hash": "9975826a615fd5a8160ff06e6e2f8fbf"
+        }
+    }
+}

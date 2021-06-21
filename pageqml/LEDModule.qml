@@ -1,4 +1,4 @@
-import QtQuick 2.9
+﻿import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQml 2.0
 import "../pageqml"
@@ -6,7 +6,8 @@ import "../moduleqml"
 import "../"
 
 Item {
-	id: parent_item
+	property string file_version: "1.0.0.0"//文件版本控制
+	id: root
 	/*普通提醒*/
 	signal tip(var outputText)
 	/*强提醒*/

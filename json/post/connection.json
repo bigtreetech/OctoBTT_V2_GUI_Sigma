@@ -1,0 +1,8 @@
+{
+    "port": "AUTO",
+    "baudrate": 0,
+    "printerProfile": "_default",
+    "autoconnect": true,
+    "save": true,
+    "command": "connect"
+}

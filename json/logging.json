@@ -1,0 +1,184 @@
+{
+    "logs": {
+        "files": [
+            {
+                "date": 1622790701,
+                "name": "serial.log.2021-06-04_08-11-41",
+                "refs": {
+                    "download": "http://192.168.0.27/downloads/logs/serial.log.2021-06-04_08-11-41",
+                    "resource": "http://192.168.0.27/plugin/logging/logs/serial.log.2021-06-04_08-11-41"
+                },
+                "size": 148
+            },
+            {
+                "date": 1606913798,
+                "name": "octoprint.log.2020-12-02",
+                "refs": {
+                    "download": "http://192.168.0.27/downloads/logs/octoprint.log.2020-12-02",
+                    "resource": "http://192.168.0.27/plugin/logging/logs/octoprint.log.2020-12-02"
+                },
+                "size": 8030
+            },
+            {
+                "date": 1622716796,
+                "name": "octoprint.log.2021-06-02",
+                "refs": {
+                    "download": "http://192.168.0.27/downloads/logs/octoprint.log.2021-06-02",
+                    "resource": "http://192.168.0.27/plugin/logging/logs/octoprint.log.2021-06-02"
+                },
+                "size": 572448
+            },
+            {
+                "date": 1622604110,
+                "name": "plugin_softwareupdate_console.log",
+                "refs": {
+                    "download": "http://192.168.0.27/downloads/logs/plugin_softwareupdate_console.log",
+                    "resource": "http://192.168.0.27/plugin/logging/logs/plugin_softwareupdate_console.log"
+                },
+                "size": 0
+            },
+            {
+                "date": 1622620733,
+                "name": "serial.log.2021-06-02_08-58-53",
+                "refs": {
+                    "download": "http://192.168.0.27/downloads/logs/serial.log.2021-06-02_08-58-53",
+                    "resource": "http://192.168.0.27/plugin/logging/logs/serial.log.2021-06-02_08-58-53"
+                },
+                "size": 148
+            },
+            {
+                "date": 1622776755,
+                "name": "serial.log.2021-06-04_04-19-15",
+                "refs": {
+                    "download": "http://192.168.0.27/downloads/logs/serial.log.2021-06-04_04-19-15",
+                    "resource": "http://192.168.0.27/plugin/logging/logs/serial.log.2021-06-04_04-19-15"
+                },
+                "size": 592
+            },
+            {
+                "date": 1622604110,
+                "name": "plugin_pluginmanager_console.log",
+                "refs": {
+                    "download": "http://192.168.0.27/downloads/logs/plugin_pluginmanager_console.log",
+                    "resource": "http://192.168.0.27/plugin/logging/logs/plugin_pluginmanager_console.log"
+                },
+                "size": 0
+            },
+            {
+                "date": 1622880298,
+                "name": "octoprint.log",
+                "refs": {
+                    "download": "http://192.168.0.27/downloads/logs/octoprint.log",
+                    "resource": "http://192.168.0.27/plugin/logging/logs/octoprint.log"
+                },
+                "size": 1189996
+            },
+            {
+                "date": 1622880126,
+                "name": "serial.log",
+                "refs": {
+                    "download": "http://192.168.0.27/downloads/logs/serial.log",
+                    "resource": "http://192.168.0.27/plugin/logging/logs/serial.log"
+                },
+                "size": 148
+            }
+        ],
+        "free": 26226212864,
+        "total": 31119536128
+    },
+    "plugintimings_log": {
+        "enabled": false
+    },
+    "serial_log": {
+        "enabled": false
+    },
+    "setup": {
+        "levels": {},
+        "loggers": [
+            "octoprint.util",
+            "octoprint",
+            "octoprint.util.commandline",
+            "octoprint.cli.plugins",
+            "octoprint.cli",
+            "octoprint.cli.server",
+            "octoprint.settings",
+            "octoprint.plugins",
+            "octoprint.startup",
+            "octoprint.events",
+            "octoprint.events.fire",
+            "octoprint.util.connectivity.connectivity_checker",
+            "octoprint.util.connectivity",
+            "octoprint.plugin.core",
+            "octoprint.plugin",
+            "tornado.access",
+            "tornado",
+            "tornado.application",
+            "tornado.general",
+            "octoprint.util.comm",
+            "octoprint.plugins.softwareupdate.updaters.pip",
+            "octoprint.plugins.softwareupdate.updaters",
+            "octoprint.plugins.softwareupdate",
+            "octoprint.plugins.softwareupdate.updaters.pip.console",
+            "octoprint.plugins.softwareupdate.updaters.download_single_file_plugin",
+            "octoprint.plugins.softwareupdate.version_checks.bitbucket_commit",
+            "octoprint.plugins.softwareupdate.version_checks",
+            "octoprint.plugins.softwareupdate.version_checks.github_commit",
+            "octoprint.plugins.softwareupdate.version_checks.github_release",
+            "octoprint.plugins.softwareupdate.version_checks.etag",
+            "octoprint.plugins.softwareupdate.version_checks.jsondata",
+            "octoprint.plugins.softwareupdate.version_checks.pypi_release",
+            "octoprint.environment",
+            "octoprint.server",
+            "octoprint.server.heartbeat",
+            "octoprint.server.util.flask",
+            "octoprint.server.util",
+            "octoprint.printer.profile",
+            "octoprint.printer",
+            "octoprint.filemanager.analysis",
+            "octoprint.filemanager",
+            "octoprint.slicing",
+            "octoprint.filemanager.storage",
+            "octoprint.filemanager.storage.timings",
+            "octoprint.server.util.flask.PreemptiveCache",
+            "octoprint.access.groups",
+            "octoprint.access",
+            "octoprint.access.users",
+            "octoprint.printer.standard",
+            "octoprint.printer.standard.job",
+            "octoprint.plugins.announcements",
+            "octoprint.plugins.logging",
+            "octoprint.plugins.appkeys",
+            "octoprint.plugins.discovery",
+            "octoprint.plugins.errortracking",
+            "octoprint.plugins.action_command_prompt",
+            "octoprint.plugins.gcodeviewer",
+            "octoprint.plugins.action_command_notification",
+            "octoprint.plugins.virtual_printer",
+            "octoprint.plugins.pluginmanager",
+            "octoprint.plugins.pluginmanager.console",
+            "octoprint.util.pip",
+            "octoprint.plugins.corewizard",
+            "octoprint.plugins.softwareupdate.console",
+            "octoprint.plugins.tracking",
+            "octoprint.plugins.pi_support",
+            "octoprint.plugins.backup",
+            "octoprint.plugins.firmware_check",
+            "octoprint.plugins.file_check",
+            "octoprint.util.jinja",
+            "octoprint.server.util.flask.fix_webassets_cache",
+            "octoprint.server.util.flask.fix_webassets_filtertool",
+            "octoprint.server.util.flask.collect_plugin_assets",
+            "octoprint.server.views",
+            "octoprint.server.util.watchdog",
+            "octoprint.util.version",
+            "octoprint.server.util.tornado",
+            "octoprint.util.net",
+            "octoprint.server.api.settings",
+            "octoprint.server.api",
+            "octoprint.server.util.sockjs",
+            "octoprint.server.api.files.timings",
+            "octoprint.server.api.files",
+            "octoprint.util.comm.command_phases"
+        ]
+    }
+}

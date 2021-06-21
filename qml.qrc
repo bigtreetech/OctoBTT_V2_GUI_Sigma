@@ -144,7 +144,9 @@
         <file>pageqml/NetworkModule.qml</file>
         <file>pageqml/PowerModule.qml</file>
         <file>pageqml/CameraModule.qml</file>
+        <file>pageqml/MachineConfiguration.qml</file>
         <file>moduleqml/FilePathModule.qml</file>
+        <file>moduleqml/FlatSwitch.qml</file>
         <file>font/SimSun.ttf</file>
     </qresource>
 </RCC>

@@ -1,0 +1,74 @@
+{
+    "current": {
+        "state": {
+            "text": "Operational",
+            "flags": {
+                "operational": true,
+                "printing": false,
+                "cancelling": false,
+                "pausing": false,
+                "resuming": false,
+                "finishing": false,
+                "closedOrError": false,
+                "error": false,
+                "paused": false,
+                "ready": true,
+                "sdReady": false
+            }
+        },
+        "job": {
+            "file": {
+                "name": null,
+                "path": null,
+                "display": null,
+                "origin": null,
+                "size": null,
+                "date": null
+            },
+            "estimatedPrintTime": null,
+            "averagePrintTime": null,
+            "lastPrintTime": null,
+            "filament": null,
+            "user": null
+        },
+        "currentZ": null,
+        "progress": {
+            "completion": null,
+            "filepos": null,
+            "printTime": null,
+            "printTimeLeft": null,
+            "printTimeLeftOrigin": null
+        },
+        "offsets": {},
+        "resends": {
+            "count": 0,
+            "transmitted": 7,
+            "ratio": 0
+        },
+        "serverTime": 1623225244.800356,
+        "temps": [
+            {
+                "time": 1623225244,
+                "tool0": {
+                    "actual": -15.0,
+                    "target": 0.0
+                },
+                "bed": {
+                    "actual": 25.74,
+                    "target": 0.0
+                },
+                "chamber": {
+                    "actual": null,
+                    "target": null
+                }
+            }
+        ],
+        "logs": [
+            "Recv:  T:-15.00 /0.00 B:25.74 /0.00 @:0 B@:0"
+        ],
+        "messages": [
+            "T:-15.00 /0.00 B:25.74 /0.00 @:0 B@:0"
+        ],
+        "busyFiles": []
+    }
+}
