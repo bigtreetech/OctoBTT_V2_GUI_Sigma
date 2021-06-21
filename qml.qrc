@@ -1,8 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>assets/icon/BingoTouch_Logo_B.svg</file>
-        <file>assets/icon/BingoTouch_Logo_H.svg</file>
         <file>assets/icon/BTT_Duck.svg</file>
         <file>assets/icon/icon-main-btt-blue.svg</file>
         <file>assets/icon/icon-main-btt.svg</file>
