@@ -164,8 +164,12 @@ Item {
                 Connections {
                     target: myWebsoket
                     // @disable-check M16
-                    onSentSearchLinkMsg: {
-                        receiver.text = msg
+                    onWsCurrentInfo: {
+                        var cjs = JSON.parse(json)
+                        var jslenght = 0
+                        for (var logs in cjs.current.logs)
+                            jslenght++
+                        receiver.text = cjs.current.logs[jslenght - 1]
                     }
                 }
             }

@@ -152,6 +152,7 @@ Item {
                     readOnly: true
                     font.pointSize: (input_area.height <= 0 ? 1 : input_area.height) / 6
                     color: "lime"
+                    property var msglist: []
                     onTextChanged: {
                         root.text_update()
                         if (scroll_area.autoScroll)
@@ -162,7 +163,7 @@ Item {
                     Connections {
                         target: myWebsoket
                         // @disable-check M16
-                        onSentSearchLinkMsg: {
+                        onWsCurrentInfo: {
                             if (scroll_area.contentHeigh <= scroll_area.contentItem.height)
                                 scroll_area.autoScroll = true
                             else
@@ -171,7 +172,15 @@ Item {
                                            >= scroll_area.contentHeight
                                            - scroll_area.contentItem.height)
                             //自动滚动控制
-                            receive_area.text = myWebsoket.historyLog(msg)
+                            var cjs = JSON.parse(json)
+                            var jslenght = 0
+                            for (var logs in cjs.current.logs) {
+                                jslenght++
+                                if (receive_area.msglist.push(
+                                            cjs.current.logs[jslenght - 1]) > 1000)
+                                    receive_area.msglist.splice(0, 1)
+                            }
+                            receive_area.text = receive_area.msglist.join('\n')
                         }
                     }
                     ///双击清空消息窗

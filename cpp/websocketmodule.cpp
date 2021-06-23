@@ -71,16 +71,16 @@ void WebSocketModule::webSocketMsgAnalysis(QString msg)
             if(MessageParser::searchJsonValue({"event","payload","printables","type"},QObj).toString() == "printables")
                 emit refreshFileInfoEvent(msg);
         }
-        if(MessageParser::searchJsonKey({"event","payload","state_string"},QObj))
-        {
-            QString var = MessageParser::searchJsonValue({"event","payload","state_string"},QObj).toString();
-            if(var == "Error: Heating failed, system stopped! Heater_ID: bed - Printer halted. kill() called!")
-                connectionStateInfoStruct.setProperty("state" , "Error: Print terminated");
-            else if(var == "Printing")
-                connectionStateInfoStruct.setProperty("state" , "Printing : " + printFileInfoStruct.property("fileName").toString());
-            else
-                connectionStateInfoStruct.setProperty("state" , var);
-        }
+//        if(MessageParser::searchJsonKey({"event","payload","state_string"},QObj))
+//        {
+//            QString var = MessageParser::searchJsonValue({"event","payload","state_string"},QObj).toString();
+//            if(var == "Error: Heating failed, system stopped! Heater_ID: bed - Printer halted. kill() called!")
+//                connectionStateInfoStruct.setProperty("state" , "Error: Print terminated");
+//            else if(var == "Printing")
+//                connectionStateInfoStruct.setProperty("state" , "Printing : " + printFileInfoStruct.property("fileName").toString());
+//            else
+//                connectionStateInfoStruct.setProperty("state" , var);
+//        }
         if(MessageParser::searchJsonKey({"event","type"},QObj))
         {
             if(MessageParser::searchJsonValue({"event","type"},QObj).toString() == "SettingsUpdated")
@@ -92,106 +92,106 @@ void WebSocketModule::webSocketMsgAnalysis(QString msg)
     {
         emit wsCurrentInfo(msg);
         // state sequence
-        QList<QString> state_sequence_List = {"cancelling","pausing","operational","paused","printing","resuming","sdReady","error","ready","finishing","closedOrError"};
-        foreach(QString var,state_sequence_List)
-        {
-            connectionStateInfoStruct.setProperty(var.toLatin1().data() , MessageParser::searchJsonValue({"current","state","flags",var},QObj).toBool());
-        }
-        // file system
-        printFileInfoStruct.setProperty("fileName" , MessageParser::searchJsonValue({"current","job","file","display"},QObj).isNull() ? "" : MessageParser::searchJsonValue({"current","job","file","display"},QObj).toString());
-        printFileInfoStruct.setProperty("filePath" , MessageParser::searchJsonValue({"current","job","file","path"},QObj).isNull() ? "" : MessageParser::searchJsonValue({"current","job","file","path"},QObj).toString());
-        // progress
-        printFileInfoStruct.setProperty("fileCompletion" ,  MessageParser::searchJsonValue({"current","progress","completion"},QObj).isNull() ? "" : QString("%1%").arg(QString::number(MessageParser::searchJsonValue({"current","progress","completion"},QObj).toDouble(), 'd', 2)));
+//        QList<QString> state_sequence_List = {"cancelling","pausing","operational","paused","printing","resuming","sdReady","error","ready","finishing","closedOrError"};
+//        foreach(QString var,state_sequence_List)
+//        {
+//            connectionStateInfoStruct.setProperty(var.toLatin1().data() , MessageParser::searchJsonValue({"current","state","flags",var},QObj).toBool());
+//        }
+//        // file system
+//        printFileInfoStruct.setProperty("fileName" , MessageParser::searchJsonValue({"current","job","file","display"},QObj).isNull() ? "" : MessageParser::searchJsonValue({"current","job","file","display"},QObj).toString());
+//        printFileInfoStruct.setProperty("filePath" , MessageParser::searchJsonValue({"current","job","file","path"},QObj).isNull() ? "" : MessageParser::searchJsonValue({"current","job","file","path"},QObj).toString());
+//        // progress
+//        printFileInfoStruct.setProperty("fileCompletion" ,  MessageParser::searchJsonValue({"current","progress","completion"},QObj).isNull() ? "" : QString("%1%").arg(QString::number(MessageParser::searchJsonValue({"current","progress","completion"},QObj).toDouble(), 'd', 2)));
 
-        if(MessageParser::searchJsonKey({"current","progress","printTime"},QObj))
-        {
-            QJsonValue printTimeValue = MessageParser::searchJsonValue({"current","progress","printTime"},QObj);
-            if(!printTimeValue.isNull())
-            {
-                int second = printTimeValue.toInt();
-                QString tempDay = second / (3600 * 24) > 0 ? QString::number(second / (3600 * 24)) + tr("day") + " " : "";
-                second = second % (3600 * 24);
-                QString tempHour = second / 3600 > 0 ? QString("1%").arg(QString::number(second / 3600), 2, QChar('0')) + ":" : "";
-                second = second % 3600;
-                QString tempMinute = !tempHour.isEmpty() && second / 60 > 0 ? QString("1%").arg(QString::number(second / 60), 2, QChar('0'))  + ":" : "";
-                QString tempSecond = QString::number(second % 60) + (tempHour.isEmpty() && tempMinute.isEmpty() ? tr("seconds") : "");
-                printFileInfoStruct.setProperty("filePrintTime" , QString("%1%2%3%4").
-                                                arg(tempDay).
-                                                arg(tempHour).
-                                                arg(tempMinute).
-                                                arg(tempSecond));
-            }
-            else
-                printFileInfoStruct.setProperty("filePrintTime" , "");
-        }
+//        if(MessageParser::searchJsonKey({"current","progress","printTime"},QObj))
+//        {
+//            QJsonValue printTimeValue = MessageParser::searchJsonValue({"current","progress","printTime"},QObj);
+//            if(!printTimeValue.isNull())
+//            {
+//                int second = printTimeValue.toInt();
+//                QString tempDay = second / (3600 * 24) > 0 ? QString::number(second / (3600 * 24)) + tr("day") + " " : "";
+//                second = second % (3600 * 24);
+//                QString tempHour = second / 3600 > 0 ? QString("1%").arg(QString::number(second / 3600), 2, QChar('0')) + ":" : "";
+//                second = second % 3600;
+//                QString tempMinute = !tempHour.isEmpty() && second / 60 > 0 ? QString("1%").arg(QString::number(second / 60), 2, QChar('0'))  + ":" : "";
+//                QString tempSecond = QString::number(second % 60) + (tempHour.isEmpty() && tempMinute.isEmpty() ? tr("seconds") : "");
+//                printFileInfoStruct.setProperty("filePrintTime" , QString("%1%2%3%4").
+//                                                arg(tempDay).
+//                                                arg(tempHour).
+//                                                arg(tempMinute).
+//                                                arg(tempSecond));
+//            }
+//            else
+//                printFileInfoStruct.setProperty("filePrintTime" , "");
+//        }
 
-        if(MessageParser::searchJsonKey({"current","temps"},QObj))
-        {
-        }
+//        if(MessageParser::searchJsonKey({"current","temps"},QObj))
+//        {
+//        }
     }
 
-    if(QObj.contains("current"))
-    {
-        QJsonValue currentValue = QObj.value("current");
-        if(currentValue.isObject())
-        {
-            QJsonObject currentObject = currentValue.toObject();
-            if(currentObject.contains("temps"))
-            {
-                QJsonValue tempsValue = currentObject.value("temps");
-                if(tempsValue.isArray())
-                {
-                    QJsonArray tempsArray = tempsValue.toArray();
-                    QJsonValue temp0Value = tempsArray.at(0);
-                    QJsonObject temp0Objcet = temp0Value.toObject();
-                    if(temp0Objcet.contains("bed"))
-                    {
-                        if(temp0Objcet.contains("bed"))
-                        {
-                            QJsonValue bedValue = temp0Objcet.value("bed");
-                            if(bedValue.isObject())
-                            {
-                                QJsonObject bedObject = bedValue.toObject();
-                                if(bedObject.contains("actual"))
-                                {
-                                    machineParameterStruct.setProperty("bedActualTemperature" , QString("%1").arg(bedObject.value("actual").toDouble()));
-                                }
-                                if(bedObject.contains("target"))
-                                {
-                                    machineParameterStruct.setProperty("bedTargetTemperature" , QString("%1").arg(bedObject.value("target").toDouble()));
-                                }
-                            }
-                        }
-                        if(temp0Objcet.contains("tool0"))
-                        {
-                            QJsonValue bedValue = temp0Objcet.value("tool0");
-                            if(bedValue.isObject())
-                            {
-                                QJsonObject bedObject = bedValue.toObject();
-                                if(bedObject.contains("actual"))
-                                {
-                                    machineParameterStruct.setProperty("tool0ActualTemperature" , QString("%1").arg(bedObject.value("actual").toDouble()));
-                                }
-                                if(bedObject.contains("target"))
-                                {
-                                    machineParameterStruct.setProperty("tool0TargetTemperature" , QString("%1").arg(bedObject.value("target").toDouble()));
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            if(currentObject.contains("currentZ"))
-            {
-                QJsonValue currentZValue = currentObject.value("currentZ");
-                machineParameterStruct.setProperty("currentZ" , QString("%1").arg(currentZValue.toDouble()));
-            }
+//    if(QObj.contains("current"))
+//    {
+//        QJsonValue currentValue = QObj.value("current");
+//        if(currentValue.isObject())
+//        {
+//            QJsonObject currentObject = currentValue.toObject();
+//            if(currentObject.contains("temps"))
+//            {
+//                QJsonValue tempsValue = currentObject.value("temps");
+//                if(tempsValue.isArray())
+//                {
+//                    QJsonArray tempsArray = tempsValue.toArray();
+//                    QJsonValue temp0Value = tempsArray.at(0);
+//                    QJsonObject temp0Objcet = temp0Value.toObject();
+//                    if(temp0Objcet.contains("bed"))
+//                    {
+//                        if(temp0Objcet.contains("bed"))
+//                        {
+//                            QJsonValue bedValue = temp0Objcet.value("bed");
+//                            if(bedValue.isObject())
+//                            {
+//                                QJsonObject bedObject = bedValue.toObject();
+//                                if(bedObject.contains("actual"))
+//                                {
+//                                    machineParameterStruct.setProperty("bedActualTemperature" , QString("%1").arg(bedObject.value("actual").toDouble()));
+//                                }
+//                                if(bedObject.contains("target"))
+//                                {
+//                                    machineParameterStruct.setProperty("bedTargetTemperature" , QString("%1").arg(bedObject.value("target").toDouble()));
+//                                }
+//                            }
+//                        }
+//                        if(temp0Objcet.contains("tool0"))
+//                        {
+//                            QJsonValue bedValue = temp0Objcet.value("tool0");
+//                            if(bedValue.isObject())
+//                            {
+//                                QJsonObject bedObject = bedValue.toObject();
+//                                if(bedObject.contains("actual"))
+//                                {
+//                                    machineParameterStruct.setProperty("tool0ActualTemperature" , QString("%1").arg(bedObject.value("actual").toDouble()));
+//                                }
+//                                if(bedObject.contains("target"))
+//                                {
+//                                    machineParameterStruct.setProperty("tool0TargetTemperature" , QString("%1").arg(bedObject.value("target").toDouble()));
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//            if(currentObject.contains("currentZ"))
+//            {
+//                QJsonValue currentZValue = currentObject.value("currentZ");
+//                machineParameterStruct.setProperty("currentZ" , QString("%1").arg(currentZValue.toDouble()));
+//            }
 
-        }
-    }
-    emit printFileInfo(&printFileInfoStruct);
-    emit machineParameterInfo(&machineParameterStruct);
-    emit connectionStateInfo(&connectionStateInfoStruct);
+//        }
+//    }
+//    emit printFileInfo(&printFileInfoStruct);
+//    emit machineParameterInfo(&machineParameterStruct);
+//    emit connectionStateInfo(&connectionStateInfoStruct);
 }
 
 QString WebSocketModule::historyLog(QString msg)
@@ -227,7 +227,7 @@ void WebSocketModule::onWSTextReceived(QString msg)
 
     disconnect(ping_pongTimer, &QTimer::timeout, this, &WebSocketModule::slot_pongTimeout);
 
-    emit sentMsgtoOut(msg);
+//    emit sentMsgtoOut(msg);
     WebSocketModule::webSocketMsgAnalysis(msg);
     QJsonDocument loadDoc(QJsonDocument::fromJson(msg.toUtf8()));
     QJsonObject QObj = loadDoc.object();
@@ -251,12 +251,12 @@ void WebSocketModule::onWSTextReceived(QString msg)
 
     if(!msg.trimmed().startsWith("{\"current\":") || msg.trimmed().length() == 0)
         return;
-    QList<QString> SearchLink ;
-    SearchLink << "current" << "logs";
-    foreach(QJsonValue _value, SearchWSJsonValue(SearchLink , QObj_1).toArray())
-    {
-        emit sentSearchLinkMsg(_value.toString());
-    }
+//    QList<QString> SearchLink ;
+//    SearchLink << "current" << "logs";
+//    foreach(QJsonValue _value, SearchWSJsonValue(SearchLink , QObj_1).toArray())
+//    {
+//        emit sentSearchLinkMsg(_value.toString());
+//    }
 }
 
 void WebSocketModule::sendPermissionsMsg()
