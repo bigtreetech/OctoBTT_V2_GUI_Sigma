@@ -5,13 +5,13 @@
 #include "./headers/userloginmodule.h"
 #include "./headers/websocketmodule.h"
 #include "./headers/functionmodule.h"
-#include "./headers/cameramodule.h"
-#include "./headers/viewprovider.h"
+//#include "./headers/cameramodule.h"
+//#include "./headers/viewprovider.h"
 
 AccessControl *globalAccess = new AccessControl();
 WebSocketModule *myWebsoket = new WebSocketModule;
 FunctionModule *functionModule = new FunctionModule();
-ViewProvider *viewProvider = new ViewProvider();
+//ViewProvider *viewProvider = new ViewProvider();
 //CameraModule *cameraModule = new CameraModule(globalAccess->MainUrl());
 int main(int argc, char *argv[])
 {
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 
     //注册模块
     qmlRegisterType<UserLoginModule>("UserLoginModule",1,0,"UserLoginModule");
-    qmlRegisterType<CameraModule>("MyCameraModule",1,0,"MyCameraModule");
+//    qmlRegisterType<CameraModule>("MyCameraModule",1,0,"MyCameraModule");
 //    qmlRegisterType<UserLoginModule>("UserInfo",1,0,"UserInfo");
 
     QGuiApplication app(argc, argv);
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("globalAccess",globalAccess);
     engine.rootContext()->setContextProperty("myWebsoket",myWebsoket);
     engine.rootContext()->setContextProperty("functionModule",functionModule);
-    engine.addImageProvider(QLatin1String("camera"), viewProvider);
+//    engine.addImageProvider(QLatin1String("camera"), viewProvider);
 
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
         &app, [url](QObject *obj, const QUrl &objUrl) {

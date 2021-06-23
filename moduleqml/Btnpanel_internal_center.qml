@@ -175,7 +175,7 @@ Item {
         ///状态组
         states: [
             State {
-                //展开测试
+                //展开
                 name: "Expend"
                 PropertyChanges {
                     target: workArea

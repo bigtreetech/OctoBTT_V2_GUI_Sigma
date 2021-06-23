@@ -28,14 +28,17 @@ Item {
         onCoreReply: {
             //json
             var metadata = JSON.parse(json)
-            for (var data in metadata.array) {
+            for (var core in metadata.core) {
                 listView.count++
                 listModel.insert(0, ({
-                                         "inputJson": metadata.array[listView.count - 1]
+                                         "inputJson": metadata.core[listView.count - 1]
                                      }))
-                //                listModel.append({
-                //                                     "inputJson": metadata.array[listView.count - 1]
-                //                                 })
+            }
+            for (var custom in metadata.custom) {
+                listView.count++
+                listModel.insert(0, ({
+                                         "inputJson": metadata.custom[listView.count - 1]
+                                     }))
             }
         }
     }

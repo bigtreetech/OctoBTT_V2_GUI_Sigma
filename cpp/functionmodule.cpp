@@ -49,12 +49,15 @@ FunctionModule::FunctionModule(QObject *parent) : QObject(parent)
 void FunctionModule::getFileInfo(QStringList usbStringList)
 {
     Q_UNUSED(usbStringList)
-    APIDisposeThread *newThread = new APIDisposeThread("get", "files", globalAccess->userinfo->cookies, QJsonObject(), globalAccess->MainUrl() + "files" + "?recursive=true");
-    APIDisposeThread::runNewThread(newThread, "files", false);
+    QJsonObject Params;
+    Params.insert("recursive",true);
+    APIDisposeThread *newThread = new APIDisposeThread("get", "files", globalAccess->userinfo->cookies, QJsonObject(), globalAccess->MainUrl() + "files" , Params);
     //获取所有文件的信息
     connect(newThread, &APIDisposeThread::sentRequest, this, [=](int _statusCode, QJsonObject _QObj, bool _requestState){
-        Q_UNUSED(_statusCode)
-        Q_UNUSED(_requestState)
+        if(_statusCode == 200 && _requestState)
+        {
+            emit octoFileReply(QJsonDocument(_QObj).toJson());
+        }
         FolderInfo* tempFolderStruct = new FolderInfo();
         FolderInfo* tempLocalFolderStruct = new FolderInfo();
         FolderInfo* tempSDcardFolderStruct = new FolderInfo();
@@ -354,6 +357,7 @@ void FunctionModule::getFileInfo(QStringList usbStringList)
         //test
 //        showFileInfoItem(tempFolderStruct);
     });
+    APIDisposeThread::runNewThread(newThread, "files", false);
 }
 
 FolderInfo* FunctionModule::getChildrenFileInfo(QJsonObject tempObject)
@@ -904,13 +908,13 @@ void FunctionModule::postConnect(QString command ,QString port,int baudrate,QStr
 
 void FunctionModule::getCore()
 {
-    APIDisposeThread *newThread = new APIDisposeThread("get", "core", globalAccess->userinfo->cookies,QJsonObject(), globalAccess->MainUrl() + "system/commands/core");
+    APIDisposeThread *newThread = new APIDisposeThread("get", "core&custom", globalAccess->userinfo->cookies,QJsonObject(), globalAccess->MainUrl() + "system/commands");
     //接收线程返回的信息
     connect(newThread, &APIDisposeThread::sentRequest, this, [=](int _statusCode, QJsonObject _QObj, bool _requestState){
         if(_statusCode == 200 && _requestState)
             emit coreReply(QJsonDocument(_QObj).toJson());
     });
-    APIDisposeThread::runNewThread(newThread, "core", false);
+    APIDisposeThread::runNewThread(newThread, "core&custom", false);
 }
 void FunctionModule::runCore(QString path)
 {

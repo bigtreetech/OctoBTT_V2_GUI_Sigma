@@ -135,6 +135,7 @@ Item {
                 ScrollBar.vertical.policy: ScrollBar.AlwaysOn
                 ScrollBar.vertical.interactive: true
                 ScrollBar.vertical.width: 30
+                property bool autoScroll: true //自动滚动标记
                 background: Rectangle {
                     anchors.fill: parent
                     color: "transparent"
@@ -152,13 +153,24 @@ Item {
                     font.pointSize: (input_area.height <= 0 ? 1 : input_area.height) / 6
                     color: "lime"
                     onTextChanged: {
-                        text_update()
-                        scroll_area.contentItem.contentY = scroll_area.contentHeight
-                                - scroll_area.contentItem.height
+                        root.text_update()
+                        if (scroll_area.autoScroll)
+                            //自动滚动功能
+                            scroll_area.contentItem.contentY = scroll_area.contentHeight
+                                    - scroll_area.contentItem.height
                     }
                     Connections {
                         target: myWebsoket
+                        // @disable-check M16
                         onSentSearchLinkMsg: {
+                            if (scroll_area.contentHeigh <= scroll_area.contentItem.height)
+                                scroll_area.autoScroll = true
+                            else
+                                scroll_area.autoScroll
+                                        = (scroll_area.contentItem.contentY
+                                           >= scroll_area.contentHeight
+                                           - scroll_area.contentItem.height)
+                            //自动滚动控制
                             receive_area.text = myWebsoket.historyLog(msg)
                         }
                     }

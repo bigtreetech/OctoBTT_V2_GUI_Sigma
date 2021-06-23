@@ -13,6 +13,16 @@ Item {
     signal reminderTip(var outputText)
     property color borderColor
     property double borderWidth
+    property bool run: root.parent.root.workArea.state !== "default"
+
+    property var fileOctoTree
+    Connections {
+        target: myWebsoket
+        // @disable-check M16
+        onOctoFileReply: {
+            root.fileOctoTree = JSON.parse(json)
+        }
+    }
     Rectangle {
         id: rect
         anchors.fill: parent

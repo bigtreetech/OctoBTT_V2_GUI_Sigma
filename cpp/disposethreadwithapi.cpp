@@ -10,12 +10,32 @@ APIDisposeThread::APIDisposeThread(QObject *parent) :
     stopped = false;
 }
 
-APIDisposeThread::APIDisposeThread(QString runMode, QString UrlType, QList<QNetworkCookie> allcookies, QJsonObject TemperatureJsonObj, QString newUrl)
+APIDisposeThread::APIDisposeThread(QString runMode, QString UrlType, QList<QNetworkCookie> allcookies, QJsonObject TemperatureJsonObj, QString newUrl,QJsonObject Params)
 {
     _runMode =  runMode;
     _UrlType =  UrlType;
     _TemperatureJsonObj =  TemperatureJsonObj;
     _newUrl = newUrl;
+    if(Params.count() > 0)
+    {
+        QStringList ParamList;
+        foreach(QString key , Params.keys())
+        {
+            QString Paramvalue;
+            if(Params.value(key).isBool())
+                Paramvalue = Params.value(key).toBool() ? "true" : "false";
+            else if(Params.value(key).isNull())
+                Paramvalue = "null";
+            else if(Params.value(key).isDouble())
+                Paramvalue = QString::number(Params.value(key).toDouble(),'f');
+            else if(Params.value(key).isString())
+                Paramvalue = Params.value(key).toString();
+            else
+                Paramvalue = Params.value(key).toString();
+            ParamList.append(QString("%1=%2").arg(key).arg(Paramvalue));
+        }
+        _newUrl = QString("%1?%2").arg(_newUrl).arg(ParamList.join("&"));
+    }
     _allcookies = allcookies;
     stopped = false;
     choosePostMode = 0;
@@ -32,33 +52,93 @@ APIDisposeThread::APIDisposeThread(QString runMode, QString UrlType, QList<QNetw
 //    choosePostMode = 1;
 //}
 
-APIDisposeThread::APIDisposeThread(QString runMode, QString UrlType, QList<QNetworkCookie> allcookies, QIODevice *data, QString newUrl)
+APIDisposeThread::APIDisposeThread(QString runMode, QString UrlType, QList<QNetworkCookie> allcookies, QIODevice *data, QString newUrl,QJsonObject Params)
 {
     _runMode =  runMode;
     _UrlType =  UrlType;
     _data =  data;
     _newUrl = newUrl;
+    if(Params.count() > 0)
+    {
+        QStringList ParamList;
+        foreach(QString key , Params.keys())
+        {
+            QString Paramvalue;
+            if(Params.value(key).isBool())
+                Paramvalue = Params.value(key).toBool() ? "true" : "false";
+            else if(Params.value(key).isNull())
+                Paramvalue = "null";
+            else if(Params.value(key).isDouble())
+                Paramvalue = QString::number(Params.value(key).toDouble(),'f');
+            else if(Params.value(key).isString())
+                Paramvalue = Params.value(key).toString();
+            else
+                Paramvalue = Params.value(key).toString();
+            ParamList.append(QString("%1=%2").arg(key).arg(Paramvalue));
+        }
+        _newUrl = QString("%1?%2").arg(_newUrl).arg(ParamList.join("&"));
+    }
     _allcookies = allcookies;
     stopped = false;
     choosePostMode = 2;
 }
 
-APIDisposeThread::APIDisposeThread(QString runMode, QString UrlType, QString folderPath, QString newFolder, QList<QNetworkCookie> allcookies, QString newUrl)
+APIDisposeThread::APIDisposeThread(QString runMode, QString UrlType, QString folderPath, QString newFolder, QList<QNetworkCookie> allcookies, QString newUrl,QJsonObject Params)
 {
     _runMode =  runMode;
     _UrlType =  UrlType;
     _newUrl = newUrl;
+    if(Params.count() > 0)
+    {
+        QStringList ParamList;
+        foreach(QString key , Params.keys())
+        {
+            QString Paramvalue;
+            if(Params.value(key).isBool())
+                Paramvalue = Params.value(key).toBool() ? "true" : "false";
+            else if(Params.value(key).isNull())
+                Paramvalue = "null";
+            else if(Params.value(key).isDouble())
+                Paramvalue = QString::number(Params.value(key).toDouble(),'f');
+            else if(Params.value(key).isString())
+                Paramvalue = Params.value(key).toString();
+            else
+                Paramvalue = Params.value(key).toString();
+            ParamList.append(QString("%1=%2").arg(key).arg(Paramvalue));
+        }
+        _newUrl = QString("%1?%2").arg(_newUrl).arg(ParamList.join("&"));
+    }
     _allcookies = allcookies;
     stopped = false;
     _folderPath = folderPath;
     _newFolder = newFolder;
 }
 
-APIDisposeThread::APIDisposeThread(QString runMode, QString UrlType, QList<QNetworkCookie> allcookies, QString folderUploadPath, QString uploadFilePath, QString newUrl)
+APIDisposeThread::APIDisposeThread(QString runMode, QString UrlType, QList<QNetworkCookie> allcookies, QString folderUploadPath, QString uploadFilePath, QString newUrl,QJsonObject Params)
 {
     _runMode =  runMode;
     _UrlType =  UrlType;
     _newUrl = newUrl;
+    if(Params.count() > 0)
+    {
+        QStringList ParamList;
+        foreach(QString key , Params.keys())
+        {
+            QString Paramvalue;
+            if(Params.value(key).isBool())
+                Paramvalue = Params.value(key).toBool() ? "true" : "false";
+            else if(Params.value(key).isNull())
+                Paramvalue = "null";
+            else if(Params.value(key).isDouble())
+                Paramvalue = QString::number(Params.value(key).toDouble(),'f');
+            else if(Params.value(key).isString())
+                Paramvalue = Params.value(key).toString();
+            else
+                Paramvalue = Params.value(key).toString();
+            ParamList.append(QString("%1=%2").arg(key).arg(Paramvalue));
+        }
+        _newUrl = QString("%1?%2").arg(_newUrl).arg(ParamList.join("&"));
+    }
     _allcookies = allcookies;
     stopped = false;
     _folderUploadPath = folderUploadPath;

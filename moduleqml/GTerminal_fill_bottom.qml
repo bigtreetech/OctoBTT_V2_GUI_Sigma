@@ -107,6 +107,7 @@ Item {
                 }
                 Connections {
                     target: page_Login.userLoginModule
+                    // @disable-check M16
                     onIpCase: {
                         if (online) {
                             lightstart.color = "orange"
@@ -116,6 +117,7 @@ Item {
                             lightstop.color = "orange"
                         }
                     }
+                    // @disable-check M16
                     onUserLoginCase: {
                         console.debug(loginState)
                         switch (loginState) {
@@ -161,6 +163,7 @@ Item {
                 //                text: ""
                 Connections {
                     target: myWebsoket
+                    // @disable-check M16
                     onSentSearchLinkMsg: {
                         receiver.text = msg
                     }

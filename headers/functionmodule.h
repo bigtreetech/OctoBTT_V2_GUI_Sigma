@@ -192,6 +192,8 @@ signals:
     void settingsUpdated(QString json);
     //core数据返回
     void coreReply(QString json);
+    //core数据返回
+    void octoFileReply(QString json);
 private:
 };
 

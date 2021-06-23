@@ -4,8 +4,7 @@ import "../pageqml"
 import "../moduleqml"
 import "../"
 
-import MyCameraModule 1.0
-
+//import MyCameraModule 1.0
 Item {
     property string file_version: "1.0.0.0" //文件版本控制
     id: root
@@ -38,33 +37,36 @@ Item {
         })
     }
     onCameraRunChanged: {
-        if (root.cameraRun)
-            myCameraModule.openCamera()
-        else {
-            myCameraModule.closeCamera()
+        if (root.cameraRun) {
+            preload.source = preload.address + preload.path + Date.now()
+        } else {
             root.imageInvalid = true
         }
     }
     Component.onDestruction: {
         myCameraModule.closeCamera()
     }
-    MyCameraModule {
-        id: myCameraModule
-        address: "http://" + globalAccess.mainIP + "/"
-        onSentQImage: {
-            //            viewer.data = image
-            viewer.source = ""
-            if (globalAccess.userinfo.login)
-                viewer.source = "image://camera/" + Date.now()
-            root.imageInvalid = false
-        }
-        Component.onCompleted: {
-            if (root.cameraRun)
-                myCameraModule.openCamera()
-            else
-                myCameraModule.closeCamera()
-        }
-    }
+    //    MyCameraModule {
+    //        id: myCameraModule
+    //        address: "http://" + globalAccess.mainIP + "/"
+    //        onSentQImage: {
+    //            //            viewer.update()
+    //            //            viewer.data = image
+    //            //            viewer.source = ""
+    //            //            if (globalAccess.userinfo.login)
+    //            //                viewer.source = "image://camera/" + Date.now()
+    //            //            else
+    //            //                viewer.source = ""
+    //            //            viewer.source = "http://192.168.0.41/webcam/?action=snapshot" + Date.now()
+    //            root.imageInvalid = false
+    //        }
+    //        Component.onCompleted: {
+    //            if (root.cameraRun)
+    //                myCameraModule.openCamera()
+    //            else
+    //                myCameraModule.closeCamera()
+    //        }
+    //    }
     Rectangle {
         id: rect
         anchors.fill: parent
@@ -81,6 +83,8 @@ Item {
             height: parent.height * 0.85
             rotation: viewer.flip90 ? -90 : 0
             color: "transparent"
+            clip: true
+            radius: parent.radius
             Behavior on rotation {
                 NumberAnimation {
                     duration: 250
@@ -90,6 +94,30 @@ Item {
             Behavior on scale {
                 NumberAnimation {
                     duration: 100
+                }
+            }
+            Image {
+                id: preload
+                anchors.fill: parent
+                visible: false
+                asynchronous: true
+                fillMode: Image.PreserveAspectFit
+                //                    source: address + path + Date.now()
+                antialiasing: true
+                property string address: "http://" + globalAccess.mainIP + "/"
+                property string path: "webcam/?action=snapshot&"
+                onStatusChanged: {
+                    if (status === Image.Ready) {
+                        preload.grabToImage(function (result) {
+                            if (root.cameraRun && globalAccess.userinfo.login) {
+                                viewer.source = result.url
+                                root.imageInvalid = false
+                                preload.source = preload.address + preload.path + Date.now()
+                            } else {
+                                viewer.source = ""
+                            }
+                        }, Qt.size(preload.width * 2, preload.height * 2))
+                    }
                 }
             }
             Rectangle {
@@ -115,32 +143,10 @@ Item {
                     property bool flipH: root.settings.webcam.flipH
                     property bool flipV: root.settings.webcam.flipV
                     property bool flip90: root.settings.webcam.rotate90
-                    //                    onFlipHChanged: {
-                    //                        var settingPathList = ["webcam", "flipH"]
-                    //                        var settingPathIsArray = [false, false]
-                    //                        var settingValue = flipH
-                    //                        functionModule.postSetting(settingPathList,
-                    //                                                   settingPathIsArray,
-                    //                                                   settingValue)
-                    //                    }
-                    //                    onFlipVChanged: {
-                    //                        var settingPathList = ["webcam", "flipV"]
-                    //                        var settingPathIsArray = [false, false]
-                    //                        var settingValue = flipV
-                    //                        functionModule.postSetting(settingPathList,
-                    //                                                   settingPathIsArray,
-                    //                                                   settingValue)
-                    //                    }
-                    //                    onFlip90Changed: {
-                    //                        var settingPathList = ["webcam", "rotate90"]
-                    //                        var settingPathIsArray = [false, false]
-                    //                        var settingValue = flip90
-                    //                        functionModule.postSetting(settingPathList,
-                    //                                                   settingPathIsArray,
-                    //                                                   settingValue)
-                    //                    }
                     fillMode: Image.PreserveAspectFit
-
+                    antialiasing: true
+                    cache: false
+                    asynchronous: true
                     transform: Rotation {
                         origin.x: viewer.width / 2
                         origin.y: viewer.height / 2

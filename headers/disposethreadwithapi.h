@@ -62,11 +62,11 @@ class APIDisposeThread : public QThread
 public:
     explicit APIDisposeThread(QObject *parent = 0);
     //通过生成对象时候将各个参数加入构造函数, 从而保存于私有成员中                                        TemperatureJsonObj/FilePath/data post三种重载形式
-    explicit APIDisposeThread(QString runMode, QString UrlType, QList<QNetworkCookie> allcookies, QJsonObject TemperatureJsonObj = QJsonObject(), QString newUrl = "");
+    explicit APIDisposeThread(QString runMode, QString UrlType, QList<QNetworkCookie> allcookies, QJsonObject TemperatureJsonObj = QJsonObject(), QString newUrl = "",QJsonObject Params  = QJsonObject());
 //    explicit APIDisposeThread(QString runMode, QString UrlType, QList<QNetworkCookie> allcookies, QString FilePath, QString newUrl = "");
-    explicit APIDisposeThread(QString runMode, QString UrlType, QList<QNetworkCookie> allcookies, QIODevice *data, QString newUrl = "");
-    explicit APIDisposeThread(QString runMode, QString UrlType, QList<QNetworkCookie> allcookies,QString folderUploadPath, QString uploadFilePath, QString newUrl = "");
-    explicit APIDisposeThread(QString runMode, QString UrlType, QString folderCreatePath, QString createNewFolder, QList<QNetworkCookie> allcookies, QString newUrl = "");
+    explicit APIDisposeThread(QString runMode, QString UrlType, QList<QNetworkCookie> allcookies, QIODevice *data, QString newUrl = "",QJsonObject Params  = QJsonObject());
+    explicit APIDisposeThread(QString runMode, QString UrlType, QList<QNetworkCookie> allcookies,QString folderUploadPath, QString uploadFilePath, QString newUrl = "",QJsonObject Params  = QJsonObject());
+    explicit APIDisposeThread(QString runMode, QString UrlType, QString folderCreatePath, QString createNewFolder, QList<QNetworkCookie> allcookies, QString newUrl = "",QJsonObject Params  = QJsonObject());
     ~APIDisposeThread();
     //用来停止线程
     void stop();

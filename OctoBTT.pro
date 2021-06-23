@@ -15,11 +15,11 @@ HEADERS += \
         headers/userloginmodule.h\
         headers/accesscontrol.h\
         headers/disposethreadwithapi.h\
-        headers/viewprovider.h \
+#        headers/viewprovider.h \
         headers/websocketmodule.h\
         headers/functionmodule.h\
         headers/connectiondetection.h\
-        headers/cameramodule.h\
+#        headers/cameramodule.h\
         headers/usbfs.h\
         headers/terminal.h\
         headers/machineprofile.h\
@@ -27,7 +27,7 @@ HEADERS += \
 
 SOURCES += \
         cpp/messageParser.cpp \
-        cpp/viewprovider.cpp \
+#        cpp/viewprovider.cpp \
         main.cpp\
         cpp/userloginmodule.cpp\
         cpp/accesscontrol.cpp\
@@ -35,7 +35,7 @@ SOURCES += \
         cpp/websocketmodule.cpp\
         cpp/functionmodule.cpp\
         cpp/connectiondetection.cpp\
-        cpp/cameramodule.cpp\
+#        cpp/cameramodule.cpp\
         cpp/usbfs.cpp\
         cpp/terminal.cpp\
         cpp/machineprofile.cpp\
