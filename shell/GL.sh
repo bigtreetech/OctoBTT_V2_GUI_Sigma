@@ -29,6 +29,6 @@ export QT_QPA_EGLFS_ALWAYS_SET_MODE=1
 export QT_QPA_PLATFORM=eglfs
 EOF
 
-sudo sed '/\[all\]/adtoverlay=vc4-fkms-v3d' /boot/config.txt
+sudo sed '/\[all\]/adtoverlay=vc4-fkms-v3d\ngpu_mem=256' /boot/config.txt
 
 
