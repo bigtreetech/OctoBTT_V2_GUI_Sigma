@@ -25,7 +25,7 @@ echo "Done."
 #su -l pi << EOF
 #sudo cat >> /etc/profile << EOF
 cat << EOF >> /etc/profile
-export QT_QPA_EGLFS_ALWAYS_SET_MODE="1"
+export QT_QPA_EGLFS_ALWAYS_SET_MODE=1
 export QT_QPA_PLATFORM=eglfs
 EOF
 
